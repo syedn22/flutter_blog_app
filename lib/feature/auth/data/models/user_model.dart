@@ -1,4 +1,4 @@
-import 'package:blog_app/feature/auth/domain/entities/user.dart';
+import 'package:blog_app/core/common/cubits/entities/user.dart';
 
 class UserModel extends User {
   UserModel({
