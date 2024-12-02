@@ -53,13 +53,13 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, User?>> getCurrentUserData() async {
+  Future<Either<Failure, User>> currentUser() async {
     try {
       final User? user = await authRemoteDataSource.getCurrentUserData();
       if (user == null) {
         left(Failure(message: 'User is null!'));
       }
-      return right(user);
+      return right(user!);
     } on sp.AuthException catch (e) {
       return left(Failure(message: e.message));
     } on ServerException catch (e) {
