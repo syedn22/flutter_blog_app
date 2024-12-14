@@ -18,7 +18,9 @@ class AppTheme {
       scaffoldBackgroundColor: AppPallete.backgroundColor,
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.all(27),
+        border: _inputBorder(),
         enabledBorder: _inputBorder(),
         focusedBorder: _inputBorder(AppPallete.gradient2),
+        errorBorder: _inputBorder(AppPallete.errorColor),
       ));
 }
