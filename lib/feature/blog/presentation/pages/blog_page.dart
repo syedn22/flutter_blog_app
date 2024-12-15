@@ -3,6 +3,7 @@ import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:blog_app/feature/blog/presentation/bloc/blog_bloc.dart';
 import 'package:blog_app/feature/blog/presentation/pages/add_blog_page.dart';
+import 'package:blog_app/feature/blog/presentation/pages/blog_viewer_page.dart';
 import 'package:blog_app/feature/blog/presentation/widgets/blog_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,13 +54,23 @@ class _BlogPageState extends State<BlogPage> {
           if (state is BlogListSuccess) {
             return ListView.builder(
               itemCount: state.blogs.length,
-              itemBuilder: (context, index) => BlogCard(
-                blog: state.blogs[index],
-                color: index % 3 == 0
-                    ? AppPallete.gradient1
-                    : index % 3 == 01
-                        ? AppPallete.gradient2
-                        : AppPallete.gradient3,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    BlogViewerPage.route(
+                      state.blogs[index],
+                    ),
+                  );
+                },
+                child: BlogCard(
+                  blog: state.blogs[index],
+                  color: index % 3 == 0
+                      ? AppPallete.gradient1
+                      : index % 3 == 01
+                          ? AppPallete.gradient2
+                          : AppPallete.gradient3,
+                ),
               ),
             );
           }
