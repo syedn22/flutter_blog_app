@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:blog_app/core/constants/constants.dart';
 import 'package:blog_app/core/error/exceptions.dart';
 import 'package:blog_app/core/error/failures.dart';
 import 'package:blog_app/core/network/connection_checker.dart';
@@ -30,7 +31,7 @@ class BlogRepositoryImpl implements BlogRepository {
       required List<String> topics}) async {
     try {
       if (!await (connectionChecker.isConnected)) {
-        return left(Failure(message: 'No internet connection!'));
+        return left(Failure(message: Constants.noConnectionMessageString));
       }
 
       BlogModel blogModel = BlogModel(

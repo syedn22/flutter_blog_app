@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:blog_app/core/common/cubits/cubit/app_user_cubit.dart';
 import 'package:blog_app/core/common/widgets/loader.dart';
+import 'package:blog_app/core/constants/constants.dart';
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/core/utils/image_picker.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
@@ -154,32 +155,31 @@ class _AddBlogPageState extends State<AddBlogPage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      ...['Technology', 'Business', 'Programming', 'Politics']
-                          .map((e) => Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (selectedTopics.contains(e)) {
-                                      selectedTopics.remove(e);
-                                    } else {
-                                      selectedTopics.add(e);
-                                    }
-                                    setState(() {});
-                                  },
-                                  child: Chip(
-                                    label: Text(e),
-                                    color: selectedTopics.contains(e)
-                                        ? const WidgetStatePropertyAll(
-                                            AppPallete.gradient1)
-                                        : null,
-                                    side: selectedTopics.contains(e)
-                                        ? null
-                                        : const BorderSide(
-                                            color: AppPallete.borderColor,
-                                          ),
-                                  ),
-                                ),
-                              ))
+                      ...Constants.topics.map((e) => Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                if (selectedTopics.contains(e)) {
+                                  selectedTopics.remove(e);
+                                } else {
+                                  selectedTopics.add(e);
+                                }
+                                setState(() {});
+                              },
+                              child: Chip(
+                                label: Text(e),
+                                color: selectedTopics.contains(e)
+                                    ? const WidgetStatePropertyAll(
+                                        AppPallete.gradient1)
+                                    : null,
+                                side: selectedTopics.contains(e)
+                                    ? null
+                                    : const BorderSide(
+                                        color: AppPallete.borderColor,
+                                      ),
+                              ),
+                            ),
+                          ))
                     ],
                   ),
                 ),
